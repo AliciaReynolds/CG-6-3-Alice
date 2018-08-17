@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace CG_6_3_Alice
 {
     class Program
@@ -19,11 +20,12 @@ namespace CG_6_3_Alice
             var end = search.Length;
             //string AliceSearch = Convert.ToString(search);
 
-            
 
-            
+
+
             //if (Alice.Contains(AliceSearch))
-            if (Alice.Contains(search))
+            //if (Alice.Contains(search)) <--- this one works but is case sensitive
+            //if (Alice.ToUpper().Contains(SEARCH)) //<---tried this for case insensitive.  No go.
 
             {
                 Console.WriteLine("True. The word was found within the quote.");
@@ -33,6 +35,10 @@ namespace CG_6_3_Alice
             {
                 Console.WriteLine("Fasle.It is not in that quote.");
             }
+
+
+            // bool contains = search.Contains("string", StringComparison.OrdinalIgnoreCase) >= 0;
+
 
             Console.ReadLine();
 
