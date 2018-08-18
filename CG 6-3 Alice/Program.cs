@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Linq; //<-- added this to help with one of the "Contains" issues but didn't work
 
 namespace CG_6_3_Alice
 {
@@ -16,15 +16,20 @@ namespace CG_6_3_Alice
             Console.WriteLine();
 
             var search = Console.ReadLine();
+            //var start = Alice.IndexOf(search, StringComparison.OrdinalIgnoreCase); <--this doesn't do case insensitive
             var start = Alice.IndexOf(search);
             var end = search.Length;
-            //string AliceSearch = Convert.ToString(search);
 
+            
+            //string title = search;
+            //bool contains = Alice.Contains("title", StringComparison.OrdinalIgnoreCase);
+            //^^That doesn't seem to work.  "Contains" says an overload issue that I can't 
+            //figure out how to fix
 
 
 
             //if (Alice.Contains(AliceSearch))
-            //if (Alice.Contains(search)) <--- this one works but is case sensitive
+            if (Alice.Contains(search)) //<--- this one works but is case sensitive
             //if (Alice.ToUpper().Contains(SEARCH)) //<---tried this for case insensitive.  No go.
 
             {
@@ -37,11 +42,16 @@ namespace CG_6_3_Alice
             }
 
 
-            // bool contains = search.Contains("string", StringComparison.OrdinalIgnoreCase) >= 0;
-
+           // bool contains = Alice.Contains(search, StringComparison.OrdinalIgnoreCase) >= 0;
+           //^^ trying to figure out case insensitive - no go on this way
 
             Console.ReadLine();
 
+        }
+
+        public static bool Contains (this string source, string toCheck, StringComparison comp)
+        {
+            return source.IndexOf(toCheck, comp) >= 0;
         }
     }
 }
